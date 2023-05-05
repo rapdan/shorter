@@ -42,12 +42,10 @@ st.write("#### Wklej długi link, a nowy krótszy zostanie wygenerowany")
 form = st.form("skracacz")
 url = form.text_input("Tutaj wklej adres url:")
 s_btn = form.form_submit_button("Skróć adres internetowy")
-
+if s_btn and url=="": 
+    warn=st.warning("🚨 Wklej adres internetowy")
 if s_btn and url:
     shorted_url=shortner.tinyurl.short(url)
     st.write("Skrócony adres to:")
     st.write(shorted_url)
     st.button("Skopuj", on_click=copying)
-
-elif url=="":
-    warn=st.warning("🚨 Wklej adres internetowy")
